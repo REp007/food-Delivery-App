@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:prj4/data/data.dart';
+
+// models
 import 'package:prj4/models/restaurant.dart';
+// Widgets
 import 'package:prj4/widgets/recent_orders.dart';
 import 'package:prj4/widgets/rating_stars.dart';
+// Screens
 import 'package:prj4/screens/restaurant_screen.dart';
+import 'package:prj4/screens/cart_screen.dart';
+
+// mock Data
+import 'package:prj4/data/data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -104,7 +111,8 @@ class _HomeScreen extends State<HomeScreen> {
         centerTitle: true,
         actions: <Widget>[
           TextButton(
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => CartScreen())),
               child: Text('Cart (${currentUser.cart.length})',
                   style: TextStyle(color: Colors.white, fontSize: 20.0)))
         ],
