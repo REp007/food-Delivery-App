@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prj4/data/data.dart';
 import 'package:prj4/models/restaurant.dart';
 import 'package:prj4/widgets/recent_orders.dart';
+import 'package:prj4/widgets/rating_stars.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,9 +32,49 @@ class _HomeScreen extends State<HomeScreen> {
           ),
           child: Row(
             children: <Widget>[
-              Image(
-                image: AssetImage(restaurant.imageUrl),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: Image(
+                  height: 150.0,
+                  width: 150.0,
+                  image: AssetImage(restaurant.imageUrl),
+                  fit: BoxFit.cover,
+                ),
               ),
+              Container(
+                margin: EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      restaurant.name,
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    RatingStars(restaurant.rating),
+                    SizedBox(
+                      height: 4.0,
+                    ),
+                    Text(
+                      restaurant.address,
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.w600),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      '1 KM',
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.w600),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(
+                      height: 4.0,
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
