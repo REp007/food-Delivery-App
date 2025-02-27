@@ -3,6 +3,7 @@ import 'package:prj4/data/data.dart';
 import 'package:prj4/models/restaurant.dart';
 import 'package:prj4/widgets/recent_orders.dart';
 import 'package:prj4/widgets/rating_stars.dart';
+import 'package:prj4/screens/restaurant_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,8 +20,12 @@ class _HomeScreen extends State<HomeScreen> {
   _builtRestaurants() {
     List<Widget> restaurantList = [];
     restaurants.forEach((Restaurant restaurant) {
-      restaurantList.add(
-        Container(
+      restaurantList.add(GestureDetector(
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => RestaurantScreen(restaurant: restaurant))),
+        child: Container(
           margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -78,7 +83,7 @@ class _HomeScreen extends State<HomeScreen> {
             ],
           ),
         ),
-      );
+      ));
     });
     return Column(children: restaurantList);
   }
