@@ -38,14 +38,16 @@ class _HomeScreen extends State<HomeScreen> {
           child: Row(
             children: <Widget>[
               ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image(
-                  height: 150.0,
-                  width: 150.0,
-                  image: AssetImage(restaurant.imageUrl),
-                  fit: BoxFit.cover,
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Hero(
+                    tag: restaurant.imageUrl,
+                    child: Image(
+                      height: 150.0,
+                      width: 150.0,
+                      image: AssetImage(restaurant.imageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  )),
               Container(
                 margin: EdgeInsets.all(12.0),
                 child: Column(
@@ -121,8 +123,8 @@ class _HomeScreen extends State<HomeScreen> {
                       borderSide: BorderSide(width: 0.8)),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      borderSide:
-                          BorderSide(width: 0.8, color: Colors.deepOrange)),
+                      borderSide: BorderSide(
+                          width: 0.8, color: Colors.deepOrangeAccent)),
                   hintText: 'Search Food or Restaurants',
                   prefixIcon: Icon(
                     Icons.search,
